@@ -1,0 +1,87 @@
+function mostrar()
+{
+	//Declarar variables.
+	var contador;
+	var nombre;
+	var sexo;
+	var edad;
+	var nota;
+	var sexoPeorNota;
+	var notaPeorNota;
+	var nombreDelMasVieje;
+	var edadDelMasVieje;
+	var notaDelMasChico;
+	var edadDelMasChico;
+
+	//Inicializar variables.
+
+	for (contador=0 ; contador<6 ; contador++)
+	{
+		//Pedir y validar datos.
+		nombre = prompt("Nombre: ");
+		sexo = prompt("Sexo: ");
+		while (sexo!="m" && sexo!="f")
+		{
+			sexo = prompt("Re-ingrese sexo:");
+		}
+		edad = prompt("Edad: ");
+		edad = parseInt(edad);
+		while(isNaN(edad) || edad<=0 || edad>=100)
+		{
+			edad = prompt("Re-ingrese edad: ")
+		}
+		nota = prompt("Nota: ");
+		nota = parseInt(nota);
+
+		while (isNaN(nota) || nota < 0 || nota > 10)
+		{
+			nota = prompt("Re-ingrese nota:");
+			nota = parseInt(nota);
+		}
+		//Lógica del programa.
+
+		if (contador==0)
+		{
+			sexoPeorNota = sexo;
+			notaPeorNota = nota;
+			nombreDelMasVieje = nombre;
+			edadDelMasVieje = edad;
+			notaDelMasChico = nota;
+			edadDelMasChico = edad;
+		}
+		else 
+		{
+			if (nota < notaPeorNota)
+			{
+				sexoPeorNota = sexo;
+				notaPeorNota = nota;
+			}
+			if (edad > edadDelMasVieje)
+			{
+				nombreDelMasVieje = nombre;
+				edadDelMasVieje = edad;
+			}
+			if (edad < edadDelMasChico)
+			{
+				notaDelMasChico = nota;
+				edadDelMasChico = edad;
+			}
+		}
+	}
+	document.write("Sexo con peor nota ("+notaPeorNota+") es: "+sexoPeorNota+"<br>");
+	document.write("Nombre del mas vieje: "+nombreDelMasVieje+" y su edad es: "+edadDelMasVieje+"<br>");
+	document.write("La nota del mas chico ("+edadDelMasChico+") es: "+notaDelMasChico+"<br>");
+}
+
+/*
+1.- Sexo peor nota.			M
+2.- Nombre del mas vieje.	Mirta
+3.- Nota del mas chico.		10
+
+Jose M 33 9
+Maria F 22 6
+Fer F 15 10
+Ger M 18 1
+Susana F 56 2
+Mirta F 99 8
+*/
